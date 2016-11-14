@@ -4,8 +4,14 @@
 #include <sys/file.h>
 #include "WREmu.h"
 
-// Maximale Anzahl von Wechselrichtern (max.10000)
-const unsigned int MAXWR = 10000;
+/* Max. Anzahl Wechselrichter
+   1 = 256   (Klasse C-Netzwerk)
+   2 = 65536 (Klasse B-Netzwerk)
+   3 = 16777216 (Klasse A-Netzwerk)
+ */
+const unsigned int MAXWR = 65535;
+
+/* Muster fuer Netzwerkkommunikation */
 const unsigned char MACMUSTER[] = {0x90,0x80,0x12,0x00,0x00,0x00};
 const unsigned char IPMUSTER[]  = {172,16,0,1};
 
@@ -33,7 +39,7 @@ const unsigned char IPMUSTER[]  = {172,16,0,1};
   };  
 
 // Analyse des Datenpaketes
-// Rückgabewerte, siehe Switch-Funktion in Main
+// Rï¿½ckgabewerte, siehe Switch-Funktion in Main
 int SelectPaket(const u_char *Packet,int length,struct WR Datenarray[MAXWR],pcap_t *info)
 {
   int i;
@@ -156,7 +162,7 @@ int SelectPaket(const u_char *Packet,int length,struct WR Datenarray[MAXWR],pcap
       }
       else
       {
-        result = 1; // Reserve für Später.
+        result = 1; // Reserve fï¿½r Spï¿½ter.
       }
     }
 
@@ -209,7 +215,7 @@ int SelectPaket(const u_char *Packet,int length,struct WR Datenarray[MAXWR],pcap
   {
     if((*(Packet+20) == 0) && (*(Packet+21) == 1))
     {
-      if((IPMUSTER[0] == *(Packet+38)) && (IPMUSTER[1] == *(Packet+39))) // Anfragen auf IP-Adresse prüfen
+      if((IPMUSTER[0] == *(Packet+38)) && (IPMUSTER[1] == *(Packet+39))) // Anfragen auf IP-Adresse prï¿½fen
       {
         txarray[6] = MACMUSTER[0];   // Source MAC 1
         txarray[7] = MACMUSTER[1];   // Source MAC 2
@@ -281,7 +287,7 @@ int main ()
   int n;
   int result;
   
-  // Datenarray für Wechselrichter  
+  // Datenarray fï¿½r Wechselrichter  
   struct WR Datenarray[MAXWR];
 
   // Initialisierung der Struktur mit Positionsnummer
@@ -290,7 +296,7 @@ int main ()
     Datenarray[n].pos = (n+1);
   }
 
-  // Öffne Ethernet-Schnittstelle
+  // ï¿½ffne Ethernet-Schnittstelle
   info = pcap_open_live(device,1500,1,100,error);
  
   // Solange die Schnittstelle aktiv ist.
@@ -303,7 +309,7 @@ int main ()
       // Analyse und Reaktion
       result = SelectPaket(Packet,data.len,Datenarray,info);
       
-      // Datenpaket zurücksetzen
+      // Datenpaket zurï¿½cksetzen
       Packet = 0;
     }
   }
