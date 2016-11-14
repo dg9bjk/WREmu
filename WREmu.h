@@ -7,15 +7,19 @@
  */
 #define MAXWR 65535
 
-/* MAC-Adresse fuer Pseudo-WR */
+/* MAC-Adresse fuer Pseudo-WR 
+   Klasse C => 0xcc
+   Klasse B => 0xbb 0xcc
+   Klasse A => 0xaa 0xbb 0xcc
+ */
 const unsigned char MACMUSTER[] = {0x90,0x80,0x12,0xAA,0xBB,0xCC};
 
 /* IP-Adressen Bereiche
-   Klasse C => 192.168.254.1
-   Klasse B => 172.31.0.1
+   Klasse C => 192.168.[1-254].0
+   Klasse B => 172.[16-31].0.0
    Klasse A => 10.0.0.0
  */
-const unsigned char IPMUSTER[]  = {172,16,0,1};
+const unsigned char IPMUSTER[]  = {172,16,0,0};
 
 //Struktur eines WR
 struct WR
