@@ -4,40 +4,6 @@
 #include <sys/file.h>
 #include "WREmu.h"
 
-/* Max. Anzahl Wechselrichter
-   1 = 256   (Klasse C-Netzwerk)
-   2 = 65536 (Klasse B-Netzwerk)
-   3 = 16777216 (Klasse A-Netzwerk)
- */
-const unsigned int MAXWR = 65535;
-
-/* Muster fuer Netzwerkkommunikation */
-const unsigned char MACMUSTER[] = {0x90,0x80,0x12,0x00,0x00,0x00};
-const unsigned char IPMUSTER[]  = {172,16,0,1};
-
-  //Struktur eines WR
-  struct WR
-  {
-    int	pos;
-    int SetpointP;
-    int SetpointQ;
-    int SetpointCosPhi;
-    int Akt_Pac;
-    int Akt_Qac;
-    int Akt_Uac;
-    int Akt_Udc;
-    int Akt_fac;
-    int Akt_CosPhi;
-    int Aktiv;
-    int Fehler;
-    int Delay;
-    int Jitter;
-    int Random;
-    int TCP_SYN;
-    int TCP_FIN;
-    int TCP_Con;
-  };  
-
 // Analyse des Datenpaketes
 // R�ckgabewerte, siehe Switch-Funktion in Main
 int SelectPaket(const u_char *Packet,int length,struct WR Datenarray[MAXWR],pcap_t *info)
