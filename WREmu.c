@@ -3,6 +3,11 @@
 #include <pcap.h>
 #include <sys/file.h>
 #include "WREmu.h"
+#include "arp.c"
+#include "ip.c"
+#include "modbus.c"
+#include "realpwr.c"
+#include "setpoint.c"
 
 // Analyse des Datenpaketes
 // R�ckgabewerte, siehe Switch-Funktion in Main

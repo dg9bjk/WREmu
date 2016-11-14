@@ -39,5 +39,3 @@ struct WR
     int TCP_FIN;
     int TCP_Con;
 };  
-
-
