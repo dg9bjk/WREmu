@@ -252,7 +252,7 @@ int SelectPaket(const u_char *Packet,int length,struct WR Datenarray[MAXWR],pcap
 int mainWREmu()
 {
   pcap_t *info;
-  char *device ="eth1";
+  char *device ="eth0";
   char error[PCAP_ERRBUF_SIZE];
   const u_char *Packet;
   struct pcap_pkthdr data;
