@@ -1,13 +1,14 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <pcap.h>
 #include <sys/file.h>
 #include "WREmu.h"
-#include "arp.c"
-#include "ip.c"
-#include "modbus.c"
-#include "realpwr.c"
-#include "setpoint.c"
 
 // Analyse des Datenpaketes
 // R�ckgabewerte, siehe Switch-Funktion in Main
@@ -248,7 +249,7 @@ int SelectPaket(const u_char *Packet,int length,struct WR Datenarray[MAXWR],pcap
 }
 
 // Hauptfunktion 
-int main ()
+int mainWREmu()
 {
   pcap_t *info;
   char *device ="eth1";

@@ -1,3 +1,23 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/* 
+ * File:   WREmu.h
+ * Author: jens
+ *
+ * Created on 3. April 2017, 15:35
+ */
+
+#ifndef WREMU_H
+#define WREMU_H
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 // Header-Files
 
 /* Max. Anzahl Wechselrichter (MAXWR)
@@ -43,3 +63,10 @@ struct WR
     int TCP_FIN;
     int TCP_Con;
 };  
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* WREMU_H */
+
